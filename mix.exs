@@ -1,7 +1,7 @@
 defmodule Nostr.Server.MixProject do
   use Mix.Project
 
-  @version "0.0.1"
+  @version "0.1.0"
 
   def project do
     [
@@ -18,7 +18,7 @@ defmodule Nostr.Server.MixProject do
       # Documentation
       name: "Nostr Server",
       source_url: "https://github.com/Sgiath/nostr-server",
-      homepage_url: "https://nostr.sgiath.dev",
+      homepage_url: "https://sgiath.dev/nostr",
       description: description(),
       package: package(),
       docs: docs()
@@ -33,7 +33,8 @@ defmodule Nostr.Server.MixProject do
 
   defp deps do
     [
-      {:nostr_lib, ">= 0.0.0"},
+      {:nostr_lib, github: "Sgiath/nostr-lib"},
+      {:bandit, "~> 0.6"},
 
       # Documentation
       {:ex_doc, "~> 0.29", only: :dev, runtime: false},
