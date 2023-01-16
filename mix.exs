@@ -36,7 +36,9 @@ defmodule Nostr.Server.MixProject do
       {:nostr_lib, ">= 0.0.0"},
 
       # Documentation
-      {:ex_doc, "~> 0.29", only: :dev, runtime: false}
+      {:ex_doc, "~> 0.29", only: :dev, runtime: false},
+      {:credo, "~> 1.6", only: [:dev, :test], runtime: false},
+      {:mix_test_watch, "~> 1.1", only: :dev, runtime: false}
     ]
   end
 
@@ -66,7 +68,26 @@ defmodule Nostr.Server.MixProject do
       ],
       main: "overview",
       formatters: ["html"],
-      extras: ["README.md"]
+      extra_section: "Guides",
+      extras: extras(),
+      groups_for_extras: groups_for_extras()
+    ]
+  end
+
+  defp extras do
+    [
+      # Introduction
+      "docs/introduction/overview.md",
+      "docs/introduction/installation.md",
+      # Guides
+      "docs/guides/basic-usage.md"
+    ]
+  end
+
+  defp groups_for_extras do
+    [
+      Introduction: ~r/docs\/introduction\/.?/,
+      Guides: ~r/docs\/guides\/.?/
     ]
   end
 end
